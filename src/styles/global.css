@@ -1,13 +1,42 @@
 @import "tailwindcss";
 
-/* ─── Typography ──────────────────────────────── */
+/* ─── Typography & Base ───────────────────────── */
 body {
   font-family: 'Montserrat', sans-serif;
+  background-image: url('/textures/fine-wool-bg.png');
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(248, 249, 251, 0.6); /* Soft overlay to keep text readable */
+  pointer-events: none;
+  z-index: -1;
 }
 
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
 }
+
+/* ─── Fabric Utility Classes ──────────────────── */
+.stitching {
+  border: 1.5px dashed rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+.soft-cushion {
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.05),
+    0 8px 10px -6px rgba(0, 0, 0, 0.05),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+}
+
 
 /* ─── Slow spin animation for ambient cloud ───── */
 @keyframes slow-spin {
