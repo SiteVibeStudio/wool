@@ -1,32 +1,166 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FadedFurButton from '../components/FadedFurButton.jsx';
+import FaqAccordion from '../components/FaqAccordion.jsx';
+
+const furCard = {
+  maroon: "background-image:url('/textures/pink-fur.png'); background-size:cover; background-position:center; filter:brightness(0.42) saturate(2) hue-rotate(-5deg);",
+  teal:   "background-image:url('/textures/blue-fur.png');  background-size:cover; background-position:center; filter:brightness(0.52) saturate(1.6);",
+};
 ---
 
 <Layout title="AETHEREAL | Luxury Mental Health in London" description="Your bespoke, transformative path to resilience starts here.">
-  
-  <!-- Floating Element: 3D-like ambient cloud -->
-  <div class="fixed bottom-[-15%] right-[-15%] w-[80vh] h-[80vh] opacity-40 pointer-events-none z-0 animate-slow-spin"
-       style="background-image: url('/textures/white-fur.png'); background-size: cover; background-position: center; filter: blur(10px) brightness(1.2) contrast(1.1); mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 70%); -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 70%)">
-  </div>
 
-  <div class="relative z-10 flex flex-col items-center justify-center min-h-[90vh] text-center px-4 max-w-5xl mx-auto space-y-10">
-    
-    <div class="inline-block px-5 py-2 rounded-full bg-white/50 backdrop-blur-md text-gray-500 text-sm font-semibold tracking-widest border border-white/60 shadow-sm uppercase transition-all hover:bg-white hover:text-gray-800">
-      AETHEREAL
+  <!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+  <nav class="w-full flex items-center justify-between px-8 py-4 border-b border-gray-100 bg-[#f8f9fb]/90 backdrop-blur-sm sticky top-0 z-50">
+    <span class="text-xs tracking-[0.35em] uppercase text-gray-800 font-semibold" style="font-family:'Playfair Display',serif;">AETHEREAL</span>
+    <div class="hidden md:flex gap-8 text-[10px] tracking-widest text-gray-500 uppercase font-medium">
+      <a href="#" class="hover:text-gray-900 transition-colors">Philosophy</a>
+      <a href="#" class="hover:text-gray-900 transition-colors">Services</a>
+      <a href="#" class="hover:text-gray-900 transition-colors">Clientele</a>
+      <a href="#" class="hover:text-gray-900 transition-colors">Newsrooms</a>
     </div>
-    
-    <h1 style="font-family: 'Playfair Display', serif;" class="text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 leading-tight md:leading-snug">
-      ELEVATING <span class="italic font-light text-gray-600">mental excellence</span><br class="hidden md:block" /> in London.
+    <div class="flex gap-3 text-gray-400 text-sm">
+      <span>✆</span>
+      <span>⊕</span>
+      <span>✉</span>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ════════════════════════════════════════════════ -->
+  <section class="flex flex-col items-center text-center px-6 pt-16 pb-12 gap-7 max-w-xl mx-auto">
+
+    <h1 class="text-4xl sm:text-5xl font-normal leading-snug text-gray-900" style="font-family:'Playfair Display',serif;">
+      ELEVATING <em class="font-light not-italic" style="font-style:italic;">mental<br/>excellence</em> in<br/>London
     </h1>
-    
-    <p class="text-lg md:text-xl lg:text-2xl font-light text-gray-600 max-w-2xl">
+
+    <!-- Sensory Sanctuary badge -->
+    <div class="relative w-44 h-44 rounded-full overflow-hidden shadow-xl flex-shrink-0">
+      <div class="absolute inset-0" style="background-image:url('/textures/white-fur.png'); background-size:cover; background-position:center;"></div>
+      <div class="absolute inset-0 bg-black/15 rounded-full"></div>
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-1 px-4">
+        <span class="text-3xl">🐑</span>
+        <p class="text-white font-bold text-[11px] tracking-[0.2em] uppercase text-center leading-tight" style="font-family:'Playfair Display',serif; text-shadow:0 1px 4px rgba(0,0,0,0.6);">SENSORY<br/>SANCTUARY</p>
+        <p class="text-white/80 text-[9px] tracking-wider text-center leading-tight mt-1" style="text-shadow:0 1px 3px rgba(0,0,0,0.5);">STEP INTO<br/>OUR SANCTUARY<br/>FOR SOUL</p>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-500 max-w-xs leading-relaxed">
       Your bespoke, transformative path to resilience starts here.
     </p>
-    
-    <div class="pt-8 w-full flex justify-center">
-      <FadedFurButton label="BOOK a Private Consultation" texture="pink" client:load />
+
+    <FadedFurButton label="✦  BOOK A PRIVATE CONSULTATION" texture="pink" client:load />
+  </section>
+
+  <!-- ══ FEATURE CARDS ════════════════════════════════════=== -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-3 px-5 pb-16 max-w-5xl mx-auto w-full">
+
+    <!-- Maroon -->
+    <div class="relative rounded-2xl overflow-hidden p-6 min-h-[190px] flex flex-col justify-between">
+      <div class="absolute inset-0" style={furCard.maroon}></div>
+      <div class="relative z-10 flex flex-col gap-2">
+        <span class="text-white/80 text-lg">🔒</span>
+        <h3 class="text-white text-sm font-semibold leading-snug" style="font-family:'Playfair Display',serif;">Bespoke Confidentiality</h3>
+        <p class="text-white/70 text-[11px] leading-relaxed">Discreet, confidential care crafted with exceptional precision to give you unparalleled peace of mind.</p>
+      </div>
     </div>
 
-  </div>
+    <!-- Teal -->
+    <div class="relative rounded-2xl overflow-hidden p-6 min-h-[190px] flex flex-col justify-between">
+      <div class="absolute inset-0" style={furCard.teal}></div>
+      <div class="relative z-10 flex flex-col gap-2">
+        <span class="text-white/80 text-lg">✦</span>
+        <h3 class="text-white text-sm font-semibold leading-snug" style="font-family:'Playfair Display',serif;">Tailored Transformative Path</h3>
+        <p class="text-white/70 text-[11px] leading-relaxed">A methodology that draws from leading therapeutic traditions with Compassionate and sound emotional health.</p>
+      </div>
+    </div>
+
+    <!-- Maroon -->
+    <div class="relative rounded-2xl overflow-hidden p-6 min-h-[190px] flex flex-col justify-between">
+      <div class="absolute inset-0" style={furCard.maroon}></div>
+      <div class="relative z-10 flex flex-col gap-2">
+        <span class="text-white/80 text-lg">🏆</span>
+        <h3 class="text-white text-sm font-semibold leading-snug" style="font-family:'Playfair Display',serif;">Transformative Results</h3>
+        <p class="text-white/70 text-[11px] leading-relaxed">Refined therapeutic outcomes that you will surely experience and bring life-long cognitive and mental health.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ BESPOKE SERVICES ══════════════════════════════════== -->
+  <section class="px-5 pb-16 max-w-5xl mx-auto w-full">
+    <h2 class="text-3xl font-normal text-center text-gray-900 mb-10" style="font-family:'Playfair Display',serif;">
+      Bespoke Services
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+      <!-- Individual Therapy: Teal -->
+      <div class="relative rounded-2xl overflow-hidden p-8 min-h-[200px] flex flex-col justify-end group cursor-pointer">
+        <div class="absolute inset-0 transition-transform duration-500 group-hover:scale-105" style={furCard.teal}></div>
+        <div class="relative z-10">
+          <p class="text-white/70 text-base mb-1">🧠</p>
+          <h3 class="text-white text-base font-semibold" style="font-family:'Playfair Display',serif;">Individual Therapy</h3>
+        </div>
+      </div>
+
+      <!-- Executive Coaching: Maroon -->
+      <div class="relative rounded-2xl overflow-hidden p-8 min-h-[200px] flex flex-col justify-end group cursor-pointer">
+        <div class="absolute inset-0 transition-transform duration-500 group-hover:scale-105" style={furCard.maroon}></div>
+        <div class="relative z-10">
+          <p class="text-white/70 text-base mb-1">✚</p>
+          <h3 class="text-white text-base font-semibold" style="font-family:'Playfair Display',serif;">Executive Coaching</h3>
+        </div>
+      </div>
+
+      <!-- Anxiety: Maroon -->
+      <div class="relative rounded-2xl overflow-hidden p-8 min-h-[200px] flex flex-col justify-end group cursor-pointer">
+        <div class="absolute inset-0 transition-transform duration-500 group-hover:scale-105" style={furCard.maroon}></div>
+        <div class="relative z-10">
+          <p class="text-white/70 text-base mb-1">🌊</p>
+          <h3 class="text-white text-base font-semibold" style="font-family:'Playfair Display',serif;">Anxiety &amp; Stress Management</h3>
+        </div>
+      </div>
+
+      <!-- Mindfulness: Teal -->
+      <div class="relative rounded-2xl overflow-hidden p-8 min-h-[200px] flex flex-col justify-end group cursor-pointer">
+        <div class="absolute inset-0 transition-transform duration-500 group-hover:scale-105" style={furCard.teal}></div>
+        <div class="relative z-10">
+          <p class="text-white/70 text-base mb-1">☁</p>
+          <h3 class="text-white text-base font-semibold" style="font-family:'Playfair Display',serif;">Mindfulness Sessions</h3>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ HOVER BANNER ══════════════════════════════════════== -->
+  <section class="px-5 pb-16 max-w-5xl mx-auto w-full">
+    <div class="relative rounded-2xl overflow-hidden p-14 text-center group cursor-pointer">
+      <div class="absolute inset-0 transition-all duration-700 group-hover:brightness-[0.55]" style={furCard.maroon}></div>
+      <div class="relative z-10">
+        <h2 class="text-white text-3xl font-light italic mb-4" style="font-family:'Playfair Display',serif;">Hover concept...</h2>
+        <p class="text-white/70 text-sm max-w-sm mx-auto leading-relaxed">
+          Step into our sanctuary for a transformative journey today.<br/>London's leading mental health practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══════════════════════════════════════════════=== -->
+  <section class="px-5 pb-16 max-w-2xl mx-auto w-full">
+    <FaqAccordion client:load />
+  </section>
+
+  <!-- ══ MAP ══════════════════════════════════════════════=== -->
+  <section class="px-5 pb-10 max-w-5xl mx-auto w-full">
+    <div class="rounded-2xl overflow-hidden" style="height:230px;">
+      <img
+        src="/textures/london-map.png"
+        alt="London Map"
+        class="w-full h-full object-cover"
+        style="filter:grayscale(1) contrast(0.85) brightness(1.05);"
+      />
+    </div>
+  </section>
+
 </Layout>
